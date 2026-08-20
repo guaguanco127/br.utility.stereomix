@@ -3,7 +3,7 @@
 By Brian Riordan  
 [guaguanco127@gmail.com](mailto:guaguanco127@gmail.com)  
 [brianriordanmusic@gmail.com](mailto:brianriordanmusic@gmail.com)  
-Repository for br.utility.stereomix.1.0, with all related filtes, can be found here: [https://github.com/guaguanco127/br.utility.stereomix.1.0](https://github.com/guaguanco127/br.utility.stereomix.1.0)  
+Repository for br.utility.stereomix.1.0, with all related files, can be found here: [https://github.com/guaguanco127/br.utility.stereomix.1.0](https://github.com/guaguanco127/br.utility.stereomix.1.0)  
 Additional programs can be found here: [https://github.com/guaguanco127/plugins](https://github.com/guaguanco127/plugins)
 
 These files were created with Max/MSP version 8.5.6. and RNBO 1.2.3
@@ -23,9 +23,9 @@ These files were created with Max/MSP version 8.5.6. and RNBO 1.2.3
 
 There are two Max/MSP patches in this folder.  
 
-br.utility.stereo.rnbo.ext.1.0 is a patch set up to export as a Max/MSP external.  
+br.utility.stereomix.rnbo.ext.1.0 is a patch set up to export as a Max/MSP external.  
 
-br.utility.stereo.rnbo.vst.1.0.maxpat is a patch set up to export as a VST or AU audio plugin.  
+br.utility.stereomix.rnbo.vst.1.0.maxpat is a patch set up to export as a VST or AU audio plugin.  
 
 Either program allows for inverting of the channels, along with panning and gain.
   
