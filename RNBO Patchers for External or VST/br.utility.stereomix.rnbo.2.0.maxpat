@@ -52,20 +52,6 @@
             },
             {
                 "box": {
-                    "data": {
-                        "clips": [
-                            {
-                                "absolutepath": "Tremblay-SA-UprightPianoPedalWide.wav",
-                                "filename": "Tremblay-SA-UprightPianoPedalWide.wav",
-                                "filekind": "audiofile",
-                                "id": "u698002325",
-                                "loop": 1,
-                                "content_state": {
-                                    "loop": 1
-                                }
-                            }
-                        ]
-                    },
                     "id": "obj-9",
                     "maxclass": "playlist~",
                     "mode": "basic",
