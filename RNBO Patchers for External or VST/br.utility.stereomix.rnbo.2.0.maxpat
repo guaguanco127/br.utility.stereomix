@@ -186,7 +186,7 @@
                                 "type": "event",
                                 "index": 3,
                                 "tag": "in3",
-                                "comment": "Invert (Int) 0 Off, 1 Both, 2 Left, 3 Right. Flips polarity along a 10 ms S-curve. Default 0"
+                                "comment": "Invert (Int) 0 Normal, 1 Invert L+R, 2 Invert L, 3 Invert R. Flips polarity along a 10 ms S-curve. Default 0"
                             },
                             {
                                 "type": "event",
@@ -526,7 +526,7 @@
                                                 {
                                                     "box": {
                                                         "maxclass": "newobj",
-                                                        "text": "in 3 @comment \"Invert (Signal/Int) 0 Off, 1 Both, 2 Left, 3 Right. Flips polarity along a 10 ms S-curve. Default 0\"",
+                                                        "text": "in 3 @comment \"Invert (Signal/Int) 0 Normal, 1 Invert L+R, 2 Invert L, 3 Invert R. Flips polarity along a 10 ms S-curve. Default 0\"",
                                                         "linecount": 2,
                                                         "patching_rect": [
                                                             370.0,
@@ -647,7 +647,7 @@
                                                         "numinlets": 7,
                                                         "numoutlets": 2,
                                                         "fontname": "<Monospaced>",
-                                                        "code": "// br.utility.stereomix.2.0 -- per-channel polarity, gain and pan\n// Created by Brian Riordan, guaguanco127@gmail.com -- https://github.com/guaguanco127/\n// MUST MATCH: the core, the UI by reference, the RNBO host and the M4L device embed this same code\n// in1/in2 audio L/R\n// in3 invert 0 Off, 1 Both, 2 Left, 3 Right\n// in4/in5 left / right gain in dB -72..35, -72 = silent, 0 = unchanged\n// in6/in7 left / right pan -100..100, -100 = hard left, 100 = hard right\n// out1/out2 audio L/R\n// Each input channel is its own mixer strip: polarity -> gain -> pan, then both strips are summed.\n// Defaults Off, 0 dB, -100, 100 pass the stereo signal through unchanged.\n// Pan is constant power, sin/cos: -3 dB on each side at the center, so a channel keeps its loudness as it moves.\n// Every change glides, so nothing ever clicks: polarity flips along a 10 ms S-curve\n// that passes through silence, gain and pan follow a 10 ms smoother.\n\nHistory polL(0);\nHistory polR(0);\nHistory gL(0);\nHistory gR(0);\nHistory panL(-1);\nHistory panR(1);\n\n// read all state first\npl = polL;\npr = polR;\ngl = gL;\ngr = gR;\nal = panL;\nar = panR;\n\nramp = 1 / max(1, mstosamps(10));\nk = 1 - exp(-1 / max(1, mstosamps(10)));\n\n// POLARITY: 0 = normal, 1 = inverted. The fade position ramps over 10 ms and a cosine turns it into\n// a gain that glides from 1 through 0 to -1 along an S-curve\nmd = clip(floor(in3 + 0.5), 0, 3);\ninvL = (md == 1) || (md == 2);\ninvR = (md == 1) || (md == 3);\npl = clip(pl + (invL ? ramp : -ramp), 0, 1);\npr = clip(pr + (invR ? ramp : -ramp), 0, 1);\n\n// GAIN: smooths amplitude, not dB, and lands exactly on its target, so -72 is true silence\ndbl = clip(in4, -72, 35);\ndbr = clip(in5, -72, 35);\ngoalL = (dbl > -72) ? dbtoa(dbl) : 0;\ngoalR = (dbr > -72) ? dbtoa(dbr) : 0;\ngl = gl + (goalL - gl) * k;\ngr = gr + (goalR - gr) * k;\n// within -120 dB of the target: land on it\nif (abs(goalL - gl) < 0.000001) {\n    gl = goalL;\n}\nif (abs(goalR - gr) < 0.000001) {\n    gr = goalR;\n}\n\n// PAN: -1..1, constant power. Hard left = cos 1, sin 0 = unity on the left only\nal = al + (clip(in6, -100, 100) * 0.01 - al) * k;\nar = ar + (clip(in7, -100, 100) * 0.01 - ar) * k;\nangL = (al + 1) * pi * 0.25;\nangR = (ar + 1) * pi * 0.25;\n\nl = in1 * cos(pl * pi) * gl;\nr = in2 * cos(pr * pi) * gr;\n\n// write state last\npolL = pl;\npolR = pr;\ngL = gl;\ngR = gr;\npanL = al;\npanR = ar;\n\nout1 = l * cos(angL) + r * cos(angR);\nout2 = l * sin(angL) + r * sin(angR);\n"
+                                                        "code": "// br.utility.stereomix.2.0 -- per-channel polarity, gain and pan\n// Created by Brian Riordan, guaguanco127@gmail.com -- https://github.com/guaguanco127/\n// MUST MATCH: the core, the UI by reference, the RNBO host and the M4L device embed this same code\n// in1/in2 audio L/R\n// in3 invert 0 Normal, 1 Invert L+R, 2 Invert L, 3 Invert R\n// in4/in5 left / right gain in dB -72..35, -72 = silent, 0 = unchanged\n// in6/in7 left / right pan -100..100, -100 = hard left, 100 = hard right\n// out1/out2 audio L/R\n// Each input channel is its own mixer strip: polarity -> gain -> pan, then both strips are summed.\n// Defaults Normal, 0 dB, -100, 100 pass the stereo signal through unchanged.\n// Pan is constant power, sin/cos: -3 dB on each side at the center, so a channel keeps its loudness as it moves.\n// Every change glides, so nothing ever clicks: polarity flips along a 10 ms S-curve\n// that passes through silence, gain and pan follow a 10 ms smoother.\n\nHistory polL(0);\nHistory polR(0);\nHistory gL(0);\nHistory gR(0);\nHistory panL(-1);\nHistory panR(1);\n\n// read all state first\npl = polL;\npr = polR;\ngl = gL;\ngr = gR;\nal = panL;\nar = panR;\n\nramp = 1 / max(1, mstosamps(10));\nk = 1 - exp(-1 / max(1, mstosamps(10)));\n\n// POLARITY: 0 = normal, 1 = inverted. The fade position ramps over 10 ms and a cosine turns it into\n// a gain that glides from 1 through 0 to -1 along an S-curve\nmd = clip(floor(in3 + 0.5), 0, 3);\ninvL = (md == 1) || (md == 2);\ninvR = (md == 1) || (md == 3);\npl = clip(pl + (invL ? ramp : -ramp), 0, 1);\npr = clip(pr + (invR ? ramp : -ramp), 0, 1);\n\n// GAIN: smooths amplitude, not dB, and lands exactly on its target, so -72 is true silence\ndbl = clip(in4, -72, 35);\ndbr = clip(in5, -72, 35);\ngoalL = (dbl > -72) ? dbtoa(dbl) : 0;\ngoalR = (dbr > -72) ? dbtoa(dbr) : 0;\ngl = gl + (goalL - gl) * k;\ngr = gr + (goalR - gr) * k;\n// within -120 dB of the target: land on it\nif (abs(goalL - gl) < 0.000001) {\n    gl = goalL;\n}\nif (abs(goalR - gr) < 0.000001) {\n    gr = goalR;\n}\n\n// PAN: -1..1, constant power. Hard left = cos 1, sin 0 = unity on the left only\nal = al + (clip(in6, -100, 100) * 0.01 - al) * k;\nar = ar + (clip(in7, -100, 100) * 0.01 - ar) * k;\nangL = (al + 1) * pi * 0.25;\nangR = (ar + 1) * pi * 0.25;\n\nl = in1 * cos(pl * pi) * gl;\nr = in2 * cos(pr * pi) * gr;\n\n// write state last\npolL = pl;\npolR = pr;\ngL = gl;\ngR = gr;\npanL = al;\npanR = ar;\n\nout1 = l * cos(angL) + r * cos(angR);\nout2 = l * sin(angL) + r * sin(angR);\n"
                                                     }
                                                 },
                                                 {
@@ -1258,7 +1258,7 @@
                                                     "list"
                                                 ],
                                                 "digest": "value from inlet with index 3",
-                                                "displayName": "Invert (Int) 0 Off, 1 Both, 2 Left, 3 Right. Flips polarity along a 10 ms S-curve. Default 0",
+                                                "displayName": "Invert (Int) 0 Normal, 1 Invert L+R, 2 Invert L, 3 Invert R. Flips polarity along a 10 ms S-curve. Default 0",
                                                 "docked": 0
                                             }
                                         ],
@@ -1269,7 +1269,7 @@
                                         "versionId": 475235762,
                                         "changesPatcherIO": 1
                                     },
-                                    "text": "in 3 @comment \"Invert (Int) 0 Off, 1 Both, 2 Left, 3 Right. Flips polarity along a 10 ms S-curve. Default 0\""
+                                    "text": "in 3 @comment \"Invert (Int) 0 Normal, 1 Invert L+R, 2 Invert L, 3 Invert R. Flips polarity along a 10 ms S-curve. Default 0\""
                                 }
                             },
                             {
@@ -1701,7 +1701,7 @@
                                         "versionId": -1093178486,
                                         "changesPatcherIO": 0
                                     },
-                                    "text": "param Invert 0 @min 0 @max 3 @enum Off Both Left Right @order 1",
+                                    "text": "param Invert 0 @min 0 @max 3 @enum Normal Invert_LR Invert_L Invert_R @order 1",
                                     "varname": "Mode"
                                 }
                             },
@@ -3971,7 +3971,7 @@
                         "Invert": {
                             "label": "Invert",
                             "isEnum": 1,
-                            "parsestring": "\"Off\" \"Both\" \"Left\" \"Right\""
+                            "parsestring": "\"Normal\" \"Invert_LR\" \"Invert_L\" \"Invert_R\""
                         },
                         "Left_Gain": {
                             "label": "Left_Gain",

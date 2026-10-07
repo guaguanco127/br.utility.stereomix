@@ -117,7 +117,7 @@
                         560.0,
                         47.0
                     ],
-                    "text": "B: the same voice on both sides, but the right side is wired backwards (*~ -1.). It sounds hollow and hard to place, and it cancels in mono. Click 3 (Invert Right) to fix it, 0 to hear the problem again."
+                    "text": "B: the same voice on both sides, but the right side is wired backwards (*~ -1.). It sounds hollow and hard to place, and it cancels in mono. Click 3 (Invert R) to fix it, 0 to hear the problem again."
                 }
             },
             {

@@ -31,7 +31,7 @@ You can use it as an abstraction within Max/MSP or as a Max for Live device with
 **A mono source sitting on one side:** turn that channel's Pan to the center.  
 **Swap or narrow the pair:** move the two pans (Left Pan 100 and Right Pan -100 swaps the sides; both at 0 is a mono mix).  
 
-**Invert:** Off, Both, Left or Right. Flips the polarity of the chosen channel over 10 ms, passing through silence for a moment instead of clicking. Both on its own sounds the same; it matters when the pair is mixed with other tracks.  
+**Invert:** Normal, Invert L+R, Invert L or Invert R. Flips the polarity of the chosen channel over 10 ms, passing through silence for a moment instead of clicking. Invert L+R on its own sounds the same; it matters when the pair is mixed with other tracks.  
 
 **Gain:** each channel from -72 dB to +35 dB. -72 is silence, 0 is unchanged.  
 
@@ -62,7 +62,7 @@ The UI version contains the plain version and has the same inlets and outlets, s
 |---|---|---|---|---|
 | 1 | Left In | Signal | | |
 | 2 | Right In | Signal | | |
-| 3 | Invert | Signal or Int (UI: Int only) | 0 Off, 1 Both, 2 Left, 3 Right | 0 |
+| 3 | Invert | Signal or Int (UI: Int only) | 0 Normal, 1 Invert L+R, 2 Invert L, 3 Invert R | 0 |
 | 4 | Left Gain | Signal or Float (UI: Float only) | dB -72 to 35: -72 = silent, 0 = unchanged | 0 |
 | 5 | Right Gain | Signal or Float (UI: Float only) | dB -72 to 35: -72 = silent, 0 = unchanged | 0 |
 | 6 | Left Pan | Signal or Float (UI: Float only) | -100 to 100: where the left input sits | -100 |

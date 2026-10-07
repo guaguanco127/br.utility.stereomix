@@ -60,7 +60,7 @@
             },
             {
                 "box": {
-                    "comment": "Invert (Int) 0 Off, 1 Both, 2 Left, 3 Right. Sets the menu. Default 0",
+                    "comment": "Invert (Int) 0 Normal, 1 Invert L+R, 2 Invert L, 3 Invert R. Sets the menu. Default 0",
                     "id": "obj-in3",
                     "index": 0,
                     "maxclass": "inlet",
@@ -187,7 +187,7 @@
             },
             {
                 "box": {
-                    "annotation": "Flips polarity: 0 Off, 1 Both, 2 Left, 3 Right. 10 ms S-curve. Default Off",
+                    "annotation": "Flips polarity: 0 Normal, 1 Invert L+R, 2 Invert L, 3 Invert R. 10 ms S-curve. Default Normal",
                     "annotation_name": "Invert",
                     "fontname": "Arial",
                     "fontsize": 12.0,
@@ -217,10 +217,10 @@
                     "saved_attribute_attributes": {
                         "valueof": {
                             "parameter_enum": [
-                                "Off",
-                                "Both",
-                                "Left",
-                                "Right"
+                                "Normal",
+                                "Invert L+R",
+                                "Invert L",
+                                "Invert R"
                             ],
                             "parameter_initial": [
                                 0
@@ -475,7 +475,7 @@
                         360.0,
                         60.0
                     ],
-                    "text": "Each inlet feeds its control, and each control feeds the core, so the screen always shows what you hear. Starting values (Invert Off, 0 dB, Left Pan -100, Right Pan 100) are the controls' Initial Values and pass the signal through unchanged."
+                    "text": "Each inlet feeds its control, and each control feeds the core, so the screen always shows what you hear. Starting values (Invert Normal, 0 dB, Left Pan -100, Right Pan 100) are the controls' Initial Values and pass the signal through unchanged."
                 }
             },
             {

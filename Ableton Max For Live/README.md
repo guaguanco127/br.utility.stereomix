@@ -28,7 +28,7 @@ A stereo audio effect with five controls: Invert, Left Gain, Right Gain, Left Pa
 **A mono source sitting on one side:** turn that channel's Pan to the center.  
 **Swap or narrow the pair:** move the two pans (Left Pan 100 and Right Pan -100 swaps the sides; both at 0 is a mono mix).  
 
-**Invert:** Off, Both, Left or Right. Flips the polarity of the chosen channel over 10 ms, passing through silence for a moment instead of clicking. Both on its own sounds the same; it matters when the pair is mixed with other tracks.  
+**Invert:** Normal, Invert L+R, Invert L or Invert R. Flips the polarity of the chosen channel over 10 ms, passing through silence for a moment instead of clicking. Invert L+R on its own sounds the same; it matters when the pair is mixed with other tracks.  
 
 **Gain:** each channel from -72 dB to +35 dB. -72 is silence, 0 is unchanged.  
 
