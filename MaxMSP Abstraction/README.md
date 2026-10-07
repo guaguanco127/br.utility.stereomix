@@ -1,6 +1,4 @@
-# Max/MSP Patches, Abstractions, Externals, RNBO, VSTs, and Ableton Max for Live 
-
-## br.utility.stereomix.2.0
+# Max/MSP Abstraction: br.utility.stereomix.2.0  
    
 By Brian Riordan  
 [guaguanco127@gmail.com](mailto:guaguanco127@gmail.com)  
@@ -10,20 +8,19 @@ By Brian Riordan
 Repository for br.utility.stereomix.2.0, with all related files, can be found here: [https://github.com/guaguanco127/br.utility.stereomix](https://github.com/guaguanco127/br.utility.stereomix)  
 Additional programs can be found here: [https://github.com/guaguanco127/br.max](https://github.com/guaguanco127/br.max)
 
-These files were created with Max 9, or RNBO.
+These files were created with Max 9.
 
-## Links
+## Table of Contents 
 
-[About](#About)  
-[Max/MSP Abstraction](https://github.com/guaguanco127/br.utility.stereomix/tree/main/MaxMSP%20Abstraction) To use as an abstraction within Max/MSP   
-[Max/MSP RNBO for External or VST](https://github.com/guaguanco127/br.utility.stereomix/tree/main/RNBO%20Patchers%20for%20External%20or%20VST) To build your own Max external, or a VST or AU audio plugin (needs RNBO)  
-[Ableton Max for Live Device](https://github.com/guaguanco127/br.utility.stereomix/tree/main/Ableton%20Max%20For%20Live) To use inside of Ableton Suite   
+[About](#About)   
+[Which file?](#Files)  
+[What is an abstraction?](#Abstraction)  
+[How To Install](#Install)  
+[How To Use](#Use) 
 
 ## <a name="About"></a>About
 
 A per-channel mixer for a stereo pair: each input channel gets its own polarity invert, gain and pan, so you can fix one side without touching the other. Every change glides, so nothing clicks. Works at any sample rate.
-
-You can use it as an abstraction within Max/MSP or as a Max for Live device within Ableton Live Suite. With RNBO you can also build your own Max external or VST/AU plugin from the included RNBO patch.
 
 **Uses:**  
 **One side wired backwards:** the pair sounds hollow and hard to place, and it cancels when summed to mono. Invert that side.  
@@ -37,15 +34,6 @@ You can use it as an abstraction within Max/MSP or as a Max for Live device with
 
 **Pan:** each channel from -100 (hard left) to 100 (hard right). Constant power, like the pan knobs on a mixing desk: a channel at the center sits -3 dB on each side, so it keeps its loudness as it moves, and both pans at the center make a mono mix that does not jump in level. The defaults (Left Pan -100, Right Pan 100) pass the signal through unchanged.
 
-## <a name="New"></a>What's new in 2.0
-
-- Pan is now constant power (-3 dB per side at the center). In 1.0 a channel got louder as it moved toward the center: +3 dB at the center, and +6 dB with both pans centered.
-- Every change glides: Invert over a 10 ms S-curve, Gain and Pan over 10 ms. -72 dB is now true silence. Gain and Pan take signals.
-- A plain version and a UI version for bpatchers (see [Which file?](#Files)).
-- One RNBO patch now makes both the Max external and the VST3/AU plugin (1.0 had two). Prebuilt externals are no longer included: the abstraction does the same job and more, so build an external only if you need one.
-- Parameters are named Invert, Left Gain, Right Gain, Left Pan and Right Pan in Live (RNBO: Invert, Left_Gain, Right_Gain, Left_Pan, Right_Pan). 1.0's names (Invert_mode, Left_Decibels, Right_Decibels, Left_Panning, Right_Panning) changed, so automation saved with 1.0 does not carry over.
-- File names changed (no more `.abs`), so 1.0 patches need the new name typed in. The seven inlets are in the same order with the same ranges and defaults.
-
 ## <a name="Files"></a>Which file?
 
 | File | What it is |
@@ -55,6 +43,20 @@ You can use it as an abstraction within Max/MSP or as a Max for Live device with
 | _br.utility.stereomix.example.2.0 | Example patch: open this first |
 
 The UI version contains the plain version and has the same inlets and outlets, so either swaps in without rewiring. Open the UI version in patching mode for comments on how it is built.
+
+## <a name="Abstraction"></a>What is an Abstraction?
+
+An abstraction is a subpatcher that is saved as an external file, and can be used just like a standard Max object. As long as your abstraction can be found in the Max file path, you can type its name into a new object box and it will be loaded directly into your patch.  
+
+By saving your logic in an abstraction, you can create modules that can be used in future work with little or no additional programming.
+
+## <a name="Install"></a>How To Install
+
+1. Make sure you have Max 9 installed, and that the Max patch you are using is saved inside a folder.  
+
+2. Copy the .maxpat files you want into the same folder as your patch. The UI version needs the plain version next to it (br.utility.stereomix.ui.2.0 uses br.utility.stereomix.2.0).
+
+3. In your patch, create an object called br.utility.stereomix.2.0. For the version with controls, create a [bpatcher] and choose br.utility.stereomix.ui.2.0.maxpat as its patcher.
 
 ## <a name="Use"></a>How To Use
 
@@ -71,3 +73,5 @@ The UI version contains the plain version and has the same inlets and outlets, s
 Outlets 1 / 2: Left Out / Right Out (Signal)
 
 Each channel is processed in this order: Invert, then Gain, then Pan; then the two channels are summed. Invert glides over 10 ms, and Gain and Pan glide over 10 ms, so you can change anything while audio plays. Gain and Pan also take signals. In the UI version a number into an inlet moves its control, so the screen always shows what you hear. Hover any inlet or outlet in Max for its description.
+
+Double-click the object to see inside it and study how it was built.
