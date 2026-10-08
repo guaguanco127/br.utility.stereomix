@@ -1,13 +1,13 @@
 # Max/MSP Patches, Abstractions, Externals, RNBO, VSTs, and Ableton Max for Live 
 
-## br.utility.stereomix.2.0
+## br.utility.stereomix.2.1
    
 By Brian Riordan  
 [guaguanco127@gmail.com](mailto:guaguanco127@gmail.com)  
 [brianriordanmusic@gmail.com](mailto:brianriordanmusic@gmail.com)  
 [https://www.brianriordanmusic.com/](https://www.brianriordanmusic.com/) 
   
-Repository for br.utility.stereomix.2.0, with all related files, can be found here: [https://github.com/guaguanco127/br.utility.stereomix](https://github.com/guaguanco127/br.utility.stereomix)  
+Repository for br.utility.stereomix.2.1, with all related files, can be found here: [https://github.com/guaguanco127/br.utility.stereomix](https://github.com/guaguanco127/br.utility.stereomix)  
 Additional programs can be found here: [https://github.com/guaguanco127/br.max](https://github.com/guaguanco127/br.max)
 
 These files were created with Max 9, or RNBO.
@@ -37,6 +37,12 @@ You can use it as an abstraction within Max/MSP or as a Max for Live device with
 
 **Pan:** each channel from -100 (hard left) to 100 (hard right). Constant power, like the pan knobs on a mixing desk: a channel at the center sits -3 dB on each side, so it keeps its loudness as it moves, and both pans at the center make a mono mix that does not jump in level. The defaults (Left Pan -100, Right Pan 100) pass the signal through unchanged.
 
+## <a name="New21"></a>What's new in 2.1
+
+- New [State outlet](#State): every abstraction and the RNBO patch now send `invert 0`, `lgain -3.`, `rgain 0.`, `lpan -100.` and `rpan 100.` out of their last outlet the moment a setting changes, so a display, Mira or another patch can follow along.
+- The inlets and the audio outlets are unchanged. Only the file names move from 2.0 to 2.1.
+- The Max for Live device is unchanged apart from the version number.
+
 ## <a name="New"></a>What's new in 2.0
 
 - Pan is now constant power (-3 dB per side at the center). In 1.0 a channel got louder as it moved toward the center: +3 dB at the center, and +6 dB with both pans centered.
@@ -50,9 +56,9 @@ You can use it as an abstraction within Max/MSP or as a Max for Live device with
 
 | File | What it is |
 |---|---|
-| br.utility.stereomix.2.0 | No UI. The plain object to patch with |
-| br.utility.stereomix.ui.2.0 | With an Invert menu and Gain and Pan dials for each channel, ready for a [bpatcher] |
-| _br.utility.stereomix.example.2.0 | Example patch: open this first |
+| br.utility.stereomix.2.1 | No UI. The plain object to patch with |
+| br.utility.stereomix.ui.2.1 | With an Invert menu and Gain and Pan dials for each channel, ready for a [bpatcher] |
+| _br.utility.stereomix.example.2.1 | Example patch: open this first |
 
 The UI version contains the plain version and has the same inlets and outlets, so either swaps in without rewiring. Open the UI version in patching mode for comments on how it is built.
 
@@ -68,6 +74,22 @@ The UI version contains the plain version and has the same inlets and outlets, s
 | 6 | Left Pan | Signal or Float (UI: Float only) | -100 to 100: where the left input sits | -100 |
 | 7 | Right Pan | Signal or Float (UI: Float only) | -100 to 100: where the right input sits | 100 |
 
-Outlets 1 / 2: Left Out / Right Out (Signal)
+Outlets 1 / 2: Left Out / Right Out (Signal)  
+Outlet 3: State (Message), see [State outlet](#State)
 
 Each channel is processed in this order: Invert, then Gain, then Pan; then the two channels are summed. Invert glides over 10 ms, and Gain and Pan glide over 10 ms, so you can change anything while audio plays. Gain and Pan also take signals. In the UI version a number into an inlet moves its control, so the screen always shows what you hear. Hover any inlet or outlet in Max for its description.
+
+## <a name="State"></a>State outlet
+
+The last outlet of every abstraction (State) sends the current settings as named messages the moment they change: `invert 0`, `lgain -3.`, `rgain 0.`, `lpan -100.` and `rpan 100.`. Use it to keep a display, Mira or another patch in sync. Pick it out by name with [route invert lgain rgain lpan rpan], not by position, so your patch keeps working if a later version adds controls. Repeats are filtered out.
+
+| Message | Type | Range |
+|---|---|---|
+| invert | Int | 0 Normal, 1 Invert L+R, 2 Invert L, 3 Invert R |
+| lgain | Float | Left Gain in dB, -72 to 35, -72 = silent |
+| rgain | Float | Right Gain in dB, -72 to 35, -72 = silent |
+| lpan | Float | Left Pan, -100 to 100 |
+| rpan | Float | Right Pan, -100 to 100 |
+
+Only numbers are reported: if a signal drives the Invert, Gain or Pan inlet of the plain version, nothing comes out of State. Invert is sent as the menu index, the same number its inlet takes, so a State message can go straight back into an inlet. The example patch has a State outlet tab that shows all of this, and the RNBO patch shows the same [route invert lgain rgain lpan rpan].
+
