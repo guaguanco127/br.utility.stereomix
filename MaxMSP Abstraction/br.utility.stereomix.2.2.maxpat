@@ -61,7 +61,7 @@
                         360.0,
                         33.0
                     ],
-                    "text": "br.utility.stereomix.2.1 -- Created by Brian Riordan, guaguanco127@gmail.com\nhttps://github.com/guaguanco127/",
+                    "text": "br.utility.stereomix.2.2 -- Created by Brian Riordan, guaguanco127@gmail.com\nhttps://github.com/guaguanco127/",
                     "fontname": "Arial",
                     "fontsize": 12.0
                 }
@@ -238,7 +238,7 @@
                         480.0,
                         22.0
                     ],
-                    "text": "gen~ @title br.utility.stereomix.2.1",
+                    "text": "gen~ @title br.utility.stereomix.2.2",
                     "fontname": "Arial",
                     "fontsize": 12.0,
                     "patcher": {
@@ -447,7 +447,7 @@
                                         900.0
                                     ],
                                     "parameter_enable": 0,
-                                    "code": "// br.utility.stereomix.2.1 -- per-channel polarity, gain and pan\n// Created by Brian Riordan, guaguanco127@gmail.com -- https://github.com/guaguanco127/\n// MUST MATCH: the core, the UI by reference, the RNBO host and the M4L device embed this same code\n// in1/in2 audio L/R\n// in3 invert 0 Normal, 1 Invert L+R, 2 Invert L, 3 Invert R\n// in4/in5 left / right gain in dB -72..35, -72 = silent, 0 = unchanged\n// in6/in7 left / right pan -100..100, -100 = hard left, 100 = hard right\n// out1/out2 audio L/R\n// Each input channel is its own mixer strip: polarity -> gain -> pan, then both strips are summed.\n// Defaults Normal, 0 dB, -100, 100 pass the stereo signal through unchanged.\n// Pan is constant power, sin/cos: -3 dB on each side at the center, so a channel keeps its loudness as it moves.\n// Every change glides, so nothing ever clicks: polarity flips along a 10 ms S-curve\n// that passes through silence, gain and pan follow a 10 ms smoother.\n\nHistory polL(0);\nHistory polR(0);\nHistory gL(0);\nHistory gR(0);\nHistory panL(-1);\nHistory panR(1);\n\n// read all state first\npl = polL;\npr = polR;\ngl = gL;\ngr = gR;\nal = panL;\nar = panR;\n\nramp = 1 / max(1, mstosamps(10));\nk = 1 - exp(-1 / max(1, mstosamps(10)));\n\n// POLARITY: 0 = normal, 1 = inverted. The fade position ramps over 10 ms and a cosine turns it into\n// a gain that glides from 1 through 0 to -1 along an S-curve\nmd = clip(floor(in3 + 0.5), 0, 3);\ninvL = (md == 1) || (md == 2);\ninvR = (md == 1) || (md == 3);\npl = clip(pl + (invL ? ramp : -ramp), 0, 1);\npr = clip(pr + (invR ? ramp : -ramp), 0, 1);\n\n// GAIN: smooths amplitude, not dB, and lands exactly on its target, so -72 is true silence\ndbl = clip(in4, -72, 35);\ndbr = clip(in5, -72, 35);\ngoalL = (dbl > -72) ? dbtoa(dbl) : 0;\ngoalR = (dbr > -72) ? dbtoa(dbr) : 0;\ngl = gl + (goalL - gl) * k;\ngr = gr + (goalR - gr) * k;\n// within -120 dB of the target: land on it\nif (abs(goalL - gl) < 0.000001) {\n    gl = goalL;\n}\nif (abs(goalR - gr) < 0.000001) {\n    gr = goalR;\n}\n\n// PAN: -1..1, constant power. Hard left = cos 1, sin 0 = unity on the left only\nal = al + (clip(in6, -100, 100) * 0.01 - al) * k;\nar = ar + (clip(in7, -100, 100) * 0.01 - ar) * k;\nangL = (al + 1) * pi * 0.25;\nangR = (ar + 1) * pi * 0.25;\n\nl = in1 * cos(pl * pi) * gl;\nr = in2 * cos(pr * pi) * gr;\n\n// write state last\npolL = pl;\npolR = pr;\ngL = gl;\ngR = gr;\npanL = al;\npanR = ar;\n\nout1 = l * cos(angL) + r * cos(angR);\nout2 = l * sin(angL) + r * sin(angR);\n",
+                                    "code": "// br.utility.stereomix.2.2 -- per-channel polarity, gain and pan\n// Created by Brian Riordan, guaguanco127@gmail.com -- https://github.com/guaguanco127/\n// MUST MATCH: the core, the UI by reference, the RNBO host and the M4L device embed this same code\n// in1/in2 audio L/R\n// in3 invert 0 Normal, 1 Invert L+R, 2 Invert L, 3 Invert R\n// in4/in5 left / right gain in dB -72..35, -72 = silent, 0 = unchanged\n// in6/in7 left / right pan -100..100, -100 = hard left, 100 = hard right\n// out1/out2 audio L/R\n// Each input channel is its own mixer strip: polarity -> gain -> pan, then both strips are summed.\n// Defaults Normal, 0 dB, -100, 100 pass the stereo signal through unchanged.\n// Pan is constant power, sin/cos: -3 dB on each side at the center, so a channel keeps its loudness as it moves.\n// Every change glides, so nothing ever clicks: polarity flips along a 10 ms S-curve\n// that passes through silence, gain and pan follow a 10 ms smoother.\n\nHistory polL(0);\nHistory polR(0);\nHistory gL(0);\nHistory gR(0);\nHistory panL(-1);\nHistory panR(1);\n\n// read all state first\npl = polL;\npr = polR;\ngl = gL;\ngr = gR;\nal = panL;\nar = panR;\n\nramp = 1 / max(1, mstosamps(10));\nk = 1 - exp(-1 / max(1, mstosamps(10)));\n\n// POLARITY: 0 = normal, 1 = inverted. The fade position ramps over 10 ms and a cosine turns it into\n// a gain that glides from 1 through 0 to -1 along an S-curve\nmd = clip(floor(in3 + 0.5), 0, 3);\ninvL = (md == 1) || (md == 2);\ninvR = (md == 1) || (md == 3);\npl = clip(pl + (invL ? ramp : -ramp), 0, 1);\npr = clip(pr + (invR ? ramp : -ramp), 0, 1);\n\n// GAIN: smooths amplitude, not dB, and lands exactly on its target, so -72 is true silence\ndbl = clip(in4, -72, 35);\ndbr = clip(in5, -72, 35);\ngoalL = (dbl > -72) ? dbtoa(dbl) : 0;\ngoalR = (dbr > -72) ? dbtoa(dbr) : 0;\ngl = gl + (goalL - gl) * k;\ngr = gr + (goalR - gr) * k;\n// within -120 dB of the target: land on it\nif (abs(goalL - gl) < 0.000001) {\n    gl = goalL;\n}\nif (abs(goalR - gr) < 0.000001) {\n    gr = goalR;\n}\n\n// PAN: -1..1, constant power. Hard left = cos 1, sin 0 = unity on the left only\nal = al + (clip(in6, -100, 100) * 0.01 - al) * k;\nar = ar + (clip(in7, -100, 100) * 0.01 - ar) * k;\nangL = (al + 1) * pi * 0.25;\nangR = (ar + 1) * pi * 0.25;\n\nl = in1 * cos(pl * pi) * gl;\nr = in2 * cos(pr * pi) * gr;\n\n// write state last\npolL = pl;\npolR = pr;\ngL = gl;\ngR = gr;\npanL = al;\npanR = ar;\n\nout1 = l * cos(angL) + r * cos(angR);\nout2 = l * sin(angL) + r * sin(angR);\n",
                                     "fontname": "Arial",
                                     "fontsize": 12.0
                                 }
@@ -615,7 +615,7 @@
                         400.0,
                         130.0
                     ],
-                    "text": "Per-channel mixer: fixes one side of a stereo pair without touching the other. Each input is its own strip: Invert flips its polarity, Gain sets its level, Pan places it. The two strips are summed to L and R. Defaults (Normal, 0 dB, Left Pan -100, Right Pan 100) pass the signal through unchanged. Pan is constant power: a channel at the center is -3 dB on each side, so it keeps its loudness as it moves. Every change glides over 10 ms, so nothing clicks. State outlet (last): every number that changes a control goes out as invert 0-3, lgain / rgain <dB> and lpan / rpan -100 to 100, through [change] so repeats are dropped. Signals feed the gen~ only and are not reported.",
+                    "text": "Per-channel mixer: fixes one side of a stereo pair without touching the other. Each input is its own strip: Invert flips its polarity, Gain sets its level, Pan places it. The two strips are summed to L and R. Defaults (Normal, 0 dB, Left Pan -100, Right Pan 100) pass the signal through unchanged. Pan is constant power: a channel at the center is -3 dB on each side, so it keeps its loudness as it moves. Every change glides over 10 ms, so nothing clicks. No State outlet here: whatever drives the core already knows the values. The .ui version reports its controls.",
                     "fontname": "Arial",
                     "fontsize": 12.0
                 }
@@ -694,232 +694,6 @@
                         20.0
                     ],
                     "text": "Pans start hard left / hard right",
-                    "fontname": "Arial",
-                    "fontsize": 12.0
-                }
-            },
-            {
-                "box": {
-                    "maxclass": "outlet",
-                    "id": "obj-1",
-                    "numinlets": 1,
-                    "numoutlets": 0,
-                    "outlettype": [],
-                    "patching_rect": [
-                        165.0,
-                        275.0,
-                        30.0,
-                        30.0
-                    ],
-                    "comment": "State (Message): invert 0-3, lgain / rgain <dB> and lpan / rpan -100 to 100, sent the moment a control changes. Numbers only (signals are not reported). Pick them out by name: [route invert lgain rgain lpan rpan]"
-                }
-            },
-            {
-                "box": {
-                    "maxclass": "newobj",
-                    "id": "obj-2",
-                    "numinlets": 1,
-                    "numoutlets": 3,
-                    "outlettype": [
-                        "",
-                        "",
-                        ""
-                    ],
-                    "patching_rect": [
-                        165.0,
-                        205.0,
-                        72.0,
-                        22.0
-                    ],
-                    "text": "change 0",
-                    "fontname": "Arial",
-                    "fontsize": 12.0
-                }
-            },
-            {
-                "box": {
-                    "maxclass": "newobj",
-                    "id": "obj-3",
-                    "numinlets": 1,
-                    "numoutlets": 1,
-                    "outlettype": [
-                        ""
-                    ],
-                    "patching_rect": [
-                        165.0,
-                        235.0,
-                        114.0,
-                        22.0
-                    ],
-                    "text": "prepend invert",
-                    "fontname": "Arial",
-                    "fontsize": 12.0
-                }
-            },
-            {
-                "box": {
-                    "maxclass": "newobj",
-                    "id": "obj-4",
-                    "numinlets": 1,
-                    "numoutlets": 3,
-                    "outlettype": [
-                        "",
-                        "",
-                        ""
-                    ],
-                    "patching_rect": [
-                        285.0,
-                        205.0,
-                        79.0,
-                        22.0
-                    ],
-                    "text": "change 0.",
-                    "fontname": "Arial",
-                    "fontsize": 12.0
-                }
-            },
-            {
-                "box": {
-                    "maxclass": "newobj",
-                    "id": "obj-5",
-                    "numinlets": 1,
-                    "numoutlets": 1,
-                    "outlettype": [
-                        ""
-                    ],
-                    "patching_rect": [
-                        285.0,
-                        235.0,
-                        107.0,
-                        22.0
-                    ],
-                    "text": "prepend lgain",
-                    "fontname": "Arial",
-                    "fontsize": 12.0
-                }
-            },
-            {
-                "box": {
-                    "maxclass": "newobj",
-                    "id": "obj-6",
-                    "numinlets": 1,
-                    "numoutlets": 3,
-                    "outlettype": [
-                        "",
-                        "",
-                        ""
-                    ],
-                    "patching_rect": [
-                        405.0,
-                        205.0,
-                        79.0,
-                        22.0
-                    ],
-                    "text": "change 0.",
-                    "fontname": "Arial",
-                    "fontsize": 12.0
-                }
-            },
-            {
-                "box": {
-                    "maxclass": "newobj",
-                    "id": "obj-7",
-                    "numinlets": 1,
-                    "numoutlets": 1,
-                    "outlettype": [
-                        ""
-                    ],
-                    "patching_rect": [
-                        405.0,
-                        235.0,
-                        107.0,
-                        22.0
-                    ],
-                    "text": "prepend rgain",
-                    "fontname": "Arial",
-                    "fontsize": 12.0
-                }
-            },
-            {
-                "box": {
-                    "maxclass": "newobj",
-                    "id": "obj-8",
-                    "numinlets": 1,
-                    "numoutlets": 3,
-                    "outlettype": [
-                        "",
-                        "",
-                        ""
-                    ],
-                    "patching_rect": [
-                        525.0,
-                        205.0,
-                        79.0,
-                        22.0
-                    ],
-                    "text": "change 0.",
-                    "fontname": "Arial",
-                    "fontsize": 12.0
-                }
-            },
-            {
-                "box": {
-                    "maxclass": "newobj",
-                    "id": "obj-9",
-                    "numinlets": 1,
-                    "numoutlets": 1,
-                    "outlettype": [
-                        ""
-                    ],
-                    "patching_rect": [
-                        525.0,
-                        235.0,
-                        100.0,
-                        22.0
-                    ],
-                    "text": "prepend lpan",
-                    "fontname": "Arial",
-                    "fontsize": 12.0
-                }
-            },
-            {
-                "box": {
-                    "maxclass": "newobj",
-                    "id": "obj-10",
-                    "numinlets": 1,
-                    "numoutlets": 3,
-                    "outlettype": [
-                        "",
-                        "",
-                        ""
-                    ],
-                    "patching_rect": [
-                        645.0,
-                        205.0,
-                        79.0,
-                        22.0
-                    ],
-                    "text": "change 0.",
-                    "fontname": "Arial",
-                    "fontsize": 12.0
-                }
-            },
-            {
-                "box": {
-                    "maxclass": "newobj",
-                    "id": "obj-11",
-                    "numinlets": 1,
-                    "numoutlets": 1,
-                    "outlettype": [
-                        ""
-                    ],
-                    "patching_rect": [
-                        645.0,
-                        235.0,
-                        100.0,
-                        22.0
-                    ],
-                    "text": "prepend rpan",
                     "fontname": "Arial",
                     "fontsize": 12.0
                 }
@@ -1054,186 +828,6 @@
                     ],
                     "destination": [
                         "obj-out2",
-                        0
-                    ]
-                }
-            },
-            {
-                "patchline": {
-                    "source": [
-                        "obj-in3",
-                        0
-                    ],
-                    "destination": [
-                        "obj-2",
-                        0
-                    ]
-                }
-            },
-            {
-                "patchline": {
-                    "source": [
-                        "obj-2",
-                        0
-                    ],
-                    "destination": [
-                        "obj-3",
-                        0
-                    ]
-                }
-            },
-            {
-                "patchline": {
-                    "source": [
-                        "obj-3",
-                        0
-                    ],
-                    "destination": [
-                        "obj-1",
-                        0
-                    ]
-                }
-            },
-            {
-                "patchline": {
-                    "source": [
-                        "obj-in4",
-                        0
-                    ],
-                    "destination": [
-                        "obj-4",
-                        0
-                    ]
-                }
-            },
-            {
-                "patchline": {
-                    "source": [
-                        "obj-4",
-                        0
-                    ],
-                    "destination": [
-                        "obj-5",
-                        0
-                    ]
-                }
-            },
-            {
-                "patchline": {
-                    "source": [
-                        "obj-5",
-                        0
-                    ],
-                    "destination": [
-                        "obj-1",
-                        0
-                    ]
-                }
-            },
-            {
-                "patchline": {
-                    "source": [
-                        "obj-in5",
-                        0
-                    ],
-                    "destination": [
-                        "obj-6",
-                        0
-                    ]
-                }
-            },
-            {
-                "patchline": {
-                    "source": [
-                        "obj-6",
-                        0
-                    ],
-                    "destination": [
-                        "obj-7",
-                        0
-                    ]
-                }
-            },
-            {
-                "patchline": {
-                    "source": [
-                        "obj-7",
-                        0
-                    ],
-                    "destination": [
-                        "obj-1",
-                        0
-                    ]
-                }
-            },
-            {
-                "patchline": {
-                    "source": [
-                        "obj-in6",
-                        0
-                    ],
-                    "destination": [
-                        "obj-8",
-                        0
-                    ]
-                }
-            },
-            {
-                "patchline": {
-                    "source": [
-                        "obj-8",
-                        0
-                    ],
-                    "destination": [
-                        "obj-9",
-                        0
-                    ]
-                }
-            },
-            {
-                "patchline": {
-                    "source": [
-                        "obj-9",
-                        0
-                    ],
-                    "destination": [
-                        "obj-1",
-                        0
-                    ]
-                }
-            },
-            {
-                "patchline": {
-                    "source": [
-                        "obj-in7",
-                        0
-                    ],
-                    "destination": [
-                        "obj-10",
-                        0
-                    ]
-                }
-            },
-            {
-                "patchline": {
-                    "source": [
-                        "obj-10",
-                        0
-                    ],
-                    "destination": [
-                        "obj-11",
-                        0
-                    ]
-                }
-            },
-            {
-                "patchline": {
-                    "source": [
-                        "obj-11",
-                        0
-                    ],
-                    "destination": [
-                        "obj-1",
                         0
                     ]
                 }

@@ -18,7 +18,7 @@
         "openrectmode": 0,
         "openinpresentation": 1,
         "devicewidth": 108.0,
-        "description": "br.utility.stereomix.ui.2.1 -- Created by Brian Riordan, guaguanco127@gmail.com -- https://github.com/guaguanco127/",
+        "description": "br.utility.stereomix.ui.2.2 -- Created by Brian Riordan, guaguanco127@gmail.com -- https://github.com/guaguanco127/",
         "boxes": [
             {
                 "box": {
@@ -89,7 +89,7 @@
                         ""
                     ],
                     "patching_rect": [
-                        240.0,
+                        295.0,
                         15.0,
                         30.0,
                         30.0
@@ -108,7 +108,7 @@
                         ""
                     ],
                     "patching_rect": [
-                        315.0,
+                        425.0,
                         15.0,
                         30.0,
                         30.0
@@ -127,7 +127,7 @@
                         ""
                     ],
                     "patching_rect": [
-                        390.0,
+                        555.0,
                         15.0,
                         30.0,
                         30.0
@@ -146,7 +146,7 @@
                         ""
                     ],
                     "patching_rect": [
-                        465.0,
+                        685.0,
                         15.0,
                         30.0,
                         30.0
@@ -163,7 +163,7 @@
                     "numoutlets": 0,
                     "patching_rect": [
                         15.0,
-                        200.0,
+                        280.0,
                         30.0,
                         30.0
                     ]
@@ -179,7 +179,7 @@
                     "numoutlets": 0,
                     "patching_rect": [
                         90.0,
-                        200.0,
+                        280.0,
                         30.0,
                         30.0
                     ]
@@ -252,8 +252,8 @@
                     ],
                     "parameter_enable": 1,
                     "patching_rect": [
-                        240.0,
-                        85.0,
+                        295.0,
+                        60.0,
                         44.0,
                         52.0
                     ],
@@ -299,8 +299,8 @@
                     ],
                     "parameter_enable": 1,
                     "patching_rect": [
-                        315.0,
-                        85.0,
+                        425.0,
+                        60.0,
                         44.0,
                         52.0
                     ],
@@ -346,8 +346,8 @@
                     ],
                     "parameter_enable": 1,
                     "patching_rect": [
-                        390.0,
-                        85.0,
+                        555.0,
+                        60.0,
                         44.0,
                         52.0
                     ],
@@ -392,8 +392,8 @@
                     ],
                     "parameter_enable": 1,
                     "patching_rect": [
-                        465.0,
-                        85.0,
+                        685.0,
+                        60.0,
                         44.0,
                         52.0
                     ],
@@ -429,7 +429,7 @@
                     "id": "obj-core",
                     "maxclass": "newobj",
                     "numinlets": 7,
-                    "numoutlets": 3,
+                    "numoutlets": 2,
                     "outlettype": [
                         "signal",
                         "signal",
@@ -437,11 +437,11 @@
                     ],
                     "patching_rect": [
                         15.0,
+                        170.0,
                         150.0,
-                        480.0,
                         22.0
                     ],
-                    "text": "br.utility.stereomix.2.1"
+                    "text": "br.utility.stereomix.2.2"
                 }
             },
             {
@@ -454,12 +454,12 @@
                     "numinlets": 1,
                     "numoutlets": 0,
                     "patching_rect": [
-                        615.0,
+                        1130.0,
                         15.0,
                         421.0,
                         33.0
                     ],
-                    "text": "br.utility.stereomix.ui.2.1 -- Created by Brian Riordan, guaguanco127@gmail.com\nhttps://github.com/guaguanco127/"
+                    "text": "br.utility.stereomix.ui.2.2 -- Created by Brian Riordan, guaguanco127@gmail.com\nhttps://github.com/guaguanco127/"
                 }
             },
             {
@@ -471,7 +471,7 @@
                     "numinlets": 1,
                     "numoutlets": 0,
                     "patching_rect": [
-                        615.0,
+                        830.0,
                         60.0,
                         360.0,
                         60.0
@@ -488,12 +488,12 @@
                     "numinlets": 1,
                     "numoutlets": 0,
                     "patching_rect": [
-                        615.0,
+                        830.0,
                         160.0,
                         360.0,
                         47.0
                     ],
-                    "text": "[br.utility.stereomix.2.1] is the real object: open it to see the gen~ inside. This file only adds the controls, so you can also patch the core directly and drive any control with a signal."
+                    "text": "[br.utility.stereomix.2.2] is the real object: open it to see the gen~ inside. This file only adds the controls, so you can also patch the core directly and drive any control with a signal."
                 }
             },
             {
@@ -506,7 +506,7 @@
                     "numoutlets": 0,
                     "patching_rect": [
                         15.0,
-                        250.0,
+                        330.0,
                         500.0,
                         60.0
                     ],
@@ -523,7 +523,7 @@
                     "numoutlets": 0,
                     "patching_rect": [
                         15.0,
-                        335.0,
+                        400.0,
                         500.0,
                         60.0
                     ],
@@ -533,7 +533,7 @@
             {
                 "box": {
                     "angle": 270.0,
-                    "annotation": "br.utility.stereomix.ui.2.1 -- Created by Brian Riordan, guaguanco127@gmail.com -- https://github.com/guaguanco127/",
+                    "annotation": "br.utility.stereomix.ui.2.2 -- Created by Brian Riordan, guaguanco127@gmail.com -- https://github.com/guaguanco127/",
                     "background": 1,
                     "bgcolor": [
                         0.0,
@@ -541,14 +541,14 @@
                         0.0,
                         1.0
                     ],
-                    "hint": "br.utility.stereomix.ui.2.1 -- Created by Brian Riordan, guaguanco127@gmail.com -- https://github.com/guaguanco127/",
+                    "hint": "br.utility.stereomix.ui.2.2 -- Created by Brian Riordan, guaguanco127@gmail.com -- https://github.com/guaguanco127/",
                     "id": "obj-panel",
                     "maxclass": "panel",
                     "mode": 0,
                     "numinlets": 1,
                     "numoutlets": 0,
                     "patching_rect": [
-                        615.0,
+                        1130.0,
                         250.0,
                         138.0,
                         74.0
@@ -572,12 +572,12 @@
                     "numoutlets": 0,
                     "outlettype": [],
                     "patching_rect": [
-                        140.0,
-                        200.0,
+                        165.0,
+                        280.0,
                         30.0,
                         30.0
                     ],
-                    "comment": "State (Message): invert 0-3, lgain / rgain <dB> and lpan / rpan -100 to 100, sent the moment a control changes. Numbers only (signals are not reported). Pick them out by name: [route invert lgain rgain lpan rpan]"
+                    "comment": "State (Message): invert 0-3, lgain / rgain <dB> and lpan / rpan -100 to 100, sent the moment a control changes. Pick them out by name: [route invert lgain rgain lpan rpan]"
                 }
             },
             {
@@ -589,11 +589,326 @@
                     "outlettype": [],
                     "patching_rect": [
                         15.0,
-                        405.0,
+                        470.0,
                         565.0,
                         47.0
                     ],
-                    "text": "The last outlet (State) reports the controls as invert 0-3, lgain / rgain <dB> and lpan / rpan -100 to 100 the moment they change. It comes from the core, so moving a control, numbers into the inlets and preset recalls all show up. Pick them out by name with [route invert lgain rgain lpan rpan].",
+                    "text": "The last outlet (State) reports the controls as invert 0-3, lgain / rgain <dB> and lpan / rpan -100 to 100 the moment they change. Each control is tapped on its way into the core, so moving it, numbers into the inlets and preset recalls all show up. Only the UI has one: whatever drives the core directly already knows the values. Pick them out by name with [route invert lgain rgain lpan rpan].",
+                    "fontname": "Arial",
+                    "fontsize": 12.0
+                }
+            },
+            {
+                "box": {
+                    "maxclass": "newobj",
+                    "id": "obj-3",
+                    "numinlets": 1,
+                    "numoutlets": 2,
+                    "outlettype": [
+                        "",
+                        ""
+                    ],
+                    "patching_rect": [
+                        165.0,
+                        125.0,
+                        51.0,
+                        22.0
+                    ],
+                    "text": "t i i",
+                    "fontname": "Arial",
+                    "fontsize": 12.0
+                }
+            },
+            {
+                "box": {
+                    "maxclass": "newobj",
+                    "id": "obj-4",
+                    "numinlets": 1,
+                    "numoutlets": 3,
+                    "outlettype": [
+                        "",
+                        "",
+                        ""
+                    ],
+                    "patching_rect": [
+                        165.0,
+                        200.0,
+                        72.0,
+                        22.0
+                    ],
+                    "text": "change 0",
+                    "fontname": "Arial",
+                    "fontsize": 12.0
+                }
+            },
+            {
+                "box": {
+                    "maxclass": "newobj",
+                    "id": "obj-5",
+                    "numinlets": 1,
+                    "numoutlets": 1,
+                    "outlettype": [
+                        ""
+                    ],
+                    "patching_rect": [
+                        165.0,
+                        230.0,
+                        110.0,
+                        22.0
+                    ],
+                    "text": "prepend invert",
+                    "fontname": "Arial",
+                    "fontsize": 12.0
+                }
+            },
+            {
+                "box": {
+                    "maxclass": "newobj",
+                    "id": "obj-6",
+                    "numinlets": 1,
+                    "numoutlets": 2,
+                    "outlettype": [
+                        "",
+                        ""
+                    ],
+                    "patching_rect": [
+                        295.0,
+                        125.0,
+                        51.0,
+                        22.0
+                    ],
+                    "text": "t f f",
+                    "fontname": "Arial",
+                    "fontsize": 12.0
+                }
+            },
+            {
+                "box": {
+                    "maxclass": "newobj",
+                    "id": "obj-7",
+                    "numinlets": 1,
+                    "numoutlets": 3,
+                    "outlettype": [
+                        "",
+                        "",
+                        ""
+                    ],
+                    "patching_rect": [
+                        295.0,
+                        200.0,
+                        79.0,
+                        22.0
+                    ],
+                    "text": "change 0.",
+                    "fontname": "Arial",
+                    "fontsize": 12.0
+                }
+            },
+            {
+                "box": {
+                    "maxclass": "newobj",
+                    "id": "obj-8",
+                    "numinlets": 1,
+                    "numoutlets": 1,
+                    "outlettype": [
+                        ""
+                    ],
+                    "patching_rect": [
+                        295.0,
+                        230.0,
+                        110.0,
+                        22.0
+                    ],
+                    "text": "prepend lgain",
+                    "fontname": "Arial",
+                    "fontsize": 12.0
+                }
+            },
+            {
+                "box": {
+                    "maxclass": "newobj",
+                    "id": "obj-9",
+                    "numinlets": 1,
+                    "numoutlets": 2,
+                    "outlettype": [
+                        "",
+                        ""
+                    ],
+                    "patching_rect": [
+                        425.0,
+                        125.0,
+                        51.0,
+                        22.0
+                    ],
+                    "text": "t f f",
+                    "fontname": "Arial",
+                    "fontsize": 12.0
+                }
+            },
+            {
+                "box": {
+                    "maxclass": "newobj",
+                    "id": "obj-10",
+                    "numinlets": 1,
+                    "numoutlets": 3,
+                    "outlettype": [
+                        "",
+                        "",
+                        ""
+                    ],
+                    "patching_rect": [
+                        425.0,
+                        200.0,
+                        79.0,
+                        22.0
+                    ],
+                    "text": "change 0.",
+                    "fontname": "Arial",
+                    "fontsize": 12.0
+                }
+            },
+            {
+                "box": {
+                    "maxclass": "newobj",
+                    "id": "obj-11",
+                    "numinlets": 1,
+                    "numoutlets": 1,
+                    "outlettype": [
+                        ""
+                    ],
+                    "patching_rect": [
+                        425.0,
+                        230.0,
+                        110.0,
+                        22.0
+                    ],
+                    "text": "prepend rgain",
+                    "fontname": "Arial",
+                    "fontsize": 12.0
+                }
+            },
+            {
+                "box": {
+                    "maxclass": "newobj",
+                    "id": "obj-12",
+                    "numinlets": 1,
+                    "numoutlets": 2,
+                    "outlettype": [
+                        "",
+                        ""
+                    ],
+                    "patching_rect": [
+                        555.0,
+                        125.0,
+                        51.0,
+                        22.0
+                    ],
+                    "text": "t f f",
+                    "fontname": "Arial",
+                    "fontsize": 12.0
+                }
+            },
+            {
+                "box": {
+                    "maxclass": "newobj",
+                    "id": "obj-13",
+                    "numinlets": 1,
+                    "numoutlets": 3,
+                    "outlettype": [
+                        "",
+                        "",
+                        ""
+                    ],
+                    "patching_rect": [
+                        555.0,
+                        200.0,
+                        79.0,
+                        22.0
+                    ],
+                    "text": "change 0.",
+                    "fontname": "Arial",
+                    "fontsize": 12.0
+                }
+            },
+            {
+                "box": {
+                    "maxclass": "newobj",
+                    "id": "obj-14",
+                    "numinlets": 1,
+                    "numoutlets": 1,
+                    "outlettype": [
+                        ""
+                    ],
+                    "patching_rect": [
+                        555.0,
+                        230.0,
+                        110.0,
+                        22.0
+                    ],
+                    "text": "prepend lpan",
+                    "fontname": "Arial",
+                    "fontsize": 12.0
+                }
+            },
+            {
+                "box": {
+                    "maxclass": "newobj",
+                    "id": "obj-15",
+                    "numinlets": 1,
+                    "numoutlets": 2,
+                    "outlettype": [
+                        "",
+                        ""
+                    ],
+                    "patching_rect": [
+                        685.0,
+                        125.0,
+                        51.0,
+                        22.0
+                    ],
+                    "text": "t f f",
+                    "fontname": "Arial",
+                    "fontsize": 12.0
+                }
+            },
+            {
+                "box": {
+                    "maxclass": "newobj",
+                    "id": "obj-16",
+                    "numinlets": 1,
+                    "numoutlets": 3,
+                    "outlettype": [
+                        "",
+                        "",
+                        ""
+                    ],
+                    "patching_rect": [
+                        685.0,
+                        200.0,
+                        79.0,
+                        22.0
+                    ],
+                    "text": "change 0.",
+                    "fontname": "Arial",
+                    "fontsize": 12.0
+                }
+            },
+            {
+                "box": {
+                    "maxclass": "newobj",
+                    "id": "obj-17",
+                    "numinlets": 1,
+                    "numoutlets": 1,
+                    "outlettype": [
+                        ""
+                    ],
+                    "patching_rect": [
+                        685.0,
+                        230.0,
+                        110.0,
+                        22.0
+                    ],
+                    "text": "prepend rpan",
                     "fontname": "Arial",
                     "fontsize": 12.0
                 }
@@ -687,66 +1002,6 @@
             {
                 "patchline": {
                     "source": [
-                        "obj-inv",
-                        0
-                    ],
-                    "destination": [
-                        "obj-core",
-                        2
-                    ]
-                }
-            },
-            {
-                "patchline": {
-                    "source": [
-                        "obj-lgain",
-                        0
-                    ],
-                    "destination": [
-                        "obj-core",
-                        3
-                    ]
-                }
-            },
-            {
-                "patchline": {
-                    "source": [
-                        "obj-rgain",
-                        0
-                    ],
-                    "destination": [
-                        "obj-core",
-                        4
-                    ]
-                }
-            },
-            {
-                "patchline": {
-                    "source": [
-                        "obj-lpan",
-                        0
-                    ],
-                    "destination": [
-                        "obj-core",
-                        5
-                    ]
-                }
-            },
-            {
-                "patchline": {
-                    "source": [
-                        "obj-rpan",
-                        0
-                    ],
-                    "destination": [
-                        "obj-core",
-                        6
-                    ]
-                }
-            },
-            {
-                "patchline": {
-                    "source": [
                         "obj-core",
                         0
                     ],
@@ -771,8 +1026,296 @@
             {
                 "patchline": {
                     "source": [
+                        "obj-inv",
+                        0
+                    ],
+                    "destination": [
+                        "obj-3",
+                        0
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "source": [
+                        "obj-3",
+                        1
+                    ],
+                    "destination": [
                         "obj-core",
                         2
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "source": [
+                        "obj-3",
+                        0
+                    ],
+                    "destination": [
+                        "obj-4",
+                        0
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "source": [
+                        "obj-4",
+                        0
+                    ],
+                    "destination": [
+                        "obj-5",
+                        0
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "source": [
+                        "obj-5",
+                        0
+                    ],
+                    "destination": [
+                        "obj-1",
+                        0
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "source": [
+                        "obj-lgain",
+                        0
+                    ],
+                    "destination": [
+                        "obj-6",
+                        0
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "source": [
+                        "obj-6",
+                        1
+                    ],
+                    "destination": [
+                        "obj-core",
+                        3
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "source": [
+                        "obj-6",
+                        0
+                    ],
+                    "destination": [
+                        "obj-7",
+                        0
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "source": [
+                        "obj-7",
+                        0
+                    ],
+                    "destination": [
+                        "obj-8",
+                        0
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "source": [
+                        "obj-8",
+                        0
+                    ],
+                    "destination": [
+                        "obj-1",
+                        0
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "source": [
+                        "obj-rgain",
+                        0
+                    ],
+                    "destination": [
+                        "obj-9",
+                        0
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "source": [
+                        "obj-9",
+                        1
+                    ],
+                    "destination": [
+                        "obj-core",
+                        4
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "source": [
+                        "obj-9",
+                        0
+                    ],
+                    "destination": [
+                        "obj-10",
+                        0
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "source": [
+                        "obj-10",
+                        0
+                    ],
+                    "destination": [
+                        "obj-11",
+                        0
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "source": [
+                        "obj-11",
+                        0
+                    ],
+                    "destination": [
+                        "obj-1",
+                        0
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "source": [
+                        "obj-lpan",
+                        0
+                    ],
+                    "destination": [
+                        "obj-12",
+                        0
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "source": [
+                        "obj-12",
+                        1
+                    ],
+                    "destination": [
+                        "obj-core",
+                        5
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "source": [
+                        "obj-12",
+                        0
+                    ],
+                    "destination": [
+                        "obj-13",
+                        0
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "source": [
+                        "obj-13",
+                        0
+                    ],
+                    "destination": [
+                        "obj-14",
+                        0
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "source": [
+                        "obj-14",
+                        0
+                    ],
+                    "destination": [
+                        "obj-1",
+                        0
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "source": [
+                        "obj-rpan",
+                        0
+                    ],
+                    "destination": [
+                        "obj-15",
+                        0
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "source": [
+                        "obj-15",
+                        1
+                    ],
+                    "destination": [
+                        "obj-core",
+                        6
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "source": [
+                        "obj-15",
+                        0
+                    ],
+                    "destination": [
+                        "obj-16",
+                        0
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "source": [
+                        "obj-16",
+                        0
+                    ],
+                    "destination": [
+                        "obj-17",
+                        0
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "source": [
+                        "obj-17",
+                        0
                     ],
                     "destination": [
                         "obj-1",
