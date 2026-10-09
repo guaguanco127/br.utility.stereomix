@@ -1,11 +1,11 @@
-# Max/MSP Abstraction: br.utility.stereomix.2.1  
+# Max/MSP Abstraction: br.utility.stereomix.2.2  
    
 By Brian Riordan  
 [guaguanco127@gmail.com](mailto:guaguanco127@gmail.com)  
 [brianriordanmusic@gmail.com](mailto:brianriordanmusic@gmail.com)  
 [https://www.brianriordanmusic.com/](https://www.brianriordanmusic.com/) 
   
-Repository for br.utility.stereomix.2.1, with all related files, can be found here: [https://github.com/guaguanco127/br.utility.stereomix](https://github.com/guaguanco127/br.utility.stereomix)  
+Repository for br.utility.stereomix.2.2, with all related files, can be found here: [https://github.com/guaguanco127/br.utility.stereomix](https://github.com/guaguanco127/br.utility.stereomix)  
 Additional programs can be found here: [https://github.com/guaguanco127/br.max](https://github.com/guaguanco127/br.max)
 
 These files were created with Max 9.
@@ -39,11 +39,11 @@ A per-channel mixer for a stereo pair: each input channel gets its own polarity 
 
 | File | What it is |
 |---|---|
-| br.utility.stereomix.2.1 | No UI. The plain object to patch with |
-| br.utility.stereomix.ui.2.1 | With an Invert menu and Gain and Pan dials for each channel, ready for a [bpatcher] |
-| _br.utility.stereomix.example.2.1 | Example patch: open this first |
+| br.utility.stereomix.2.2 | No UI. The plain object to patch with |
+| br.utility.stereomix.ui.2.2 | With an Invert menu and Gain and Pan dials for each channel, ready for a [bpatcher] |
+| _br.utility.stereomix.example.2.2 | Example patch: open this first |
 
-The UI version contains the plain version and has the same inlets and outlets, so either swaps in without rewiring. Open the UI version in patching mode for comments on how it is built.
+The UI version contains the plain version and has the same inlets and audio outlets (plus State last), so either swaps in without rewiring. Open the UI version in patching mode for comments on how it is built.
 
 ## <a name="Abstraction"></a>What is an Abstraction?
 
@@ -55,9 +55,9 @@ By saving your logic in an abstraction, you can create modules that can be used 
 
 1. Make sure you have Max 9 installed, and that the Max patch you are using is saved inside a folder.  
 
-2. Copy the .maxpat files you want into the same folder as your patch. The UI version needs the plain version next to it (br.utility.stereomix.ui.2.1 uses br.utility.stereomix.2.1).
+2. Copy the .maxpat files you want into the same folder as your patch. The UI version needs the plain version next to it (br.utility.stereomix.ui.2.2 uses br.utility.stereomix.2.2).
 
-3. In your patch, create an object called br.utility.stereomix.2.1. For the version with controls, create a [bpatcher] and choose br.utility.stereomix.ui.2.1.maxpat as its patcher.
+3. In your patch, create an object called br.utility.stereomix.2.2. For the version with controls, create a [bpatcher] and choose br.utility.stereomix.ui.2.2.maxpat as its patcher.
 
 ## <a name="Use"></a>How To Use
 
@@ -72,13 +72,13 @@ By saving your logic in an abstraction, you can create modules that can be used 
 | 7 | Right Pan | Signal or Float (UI: Float only) | -100 to 100: where the right input sits | 100 |
 
 Outlets 1 / 2: Left Out / Right Out (Signal)  
-Outlet 3: State (Message), see [State outlet](#State)
+Outlet 3 (UI version only): State (Message), see [State outlet](#State)
 
 Each channel is processed in this order: Invert, then Gain, then Pan; then the two channels are summed. Invert glides over 10 ms, and Gain and Pan glide over 10 ms, so you can change anything while audio plays. Gain and Pan also take signals. In the UI version a number into an inlet moves its control, so the screen always shows what you hear. Hover any inlet or outlet in Max for its description.
 
 ## <a name="State"></a>State outlet
 
-The last outlet of every abstraction (State) sends the current settings as named messages the moment they change: `invert 0`, `lgain -3.`, `rgain 0.`, `lpan -100.` and `rpan 100.`. Use it to keep a display, Mira or another patch in sync. Pick it out by name with [route invert lgain rgain lpan rpan], not by position, so your patch keeps working if a later version adds controls. Repeats are filtered out.
+The last outlet of the UI version (State) sends the current settings as named messages the moment they change: `invert 0`, `lgain -3.`, `rgain 0.`, `lpan -100.` and `rpan 100.`. Use it to keep a display, Mira or another patch in sync. Pick it out by name with [route invert lgain rgain lpan rpan], not by position, so your patch keeps working if a later version adds controls. Repeats are filtered out.
 
 | Message | Type | Range |
 |---|---|---|
@@ -88,7 +88,7 @@ The last outlet of every abstraction (State) sends the current settings as named
 | lpan | Float | Left Pan, -100 to 100 |
 | rpan | Float | Right Pan, -100 to 100 |
 
-Only numbers are reported: if a signal drives the Invert, Gain or Pan inlet of the plain version, nothing comes out of State. Invert is sent as the menu index, the same number its inlet takes, so a State message can go straight back into an inlet. The example patch has a State outlet tab that shows all of this, and the RNBO patch shows the same [route invert lgain rgain lpan rpan].
+The plain version has no State outlet: whatever drives it already knows the values. Invert is sent as the menu index, the same number its inlet takes, so a State message can go straight back into an inlet. The example patch has a State outlet tab that shows all of this.
 
 
 Double-click the object to see inside it and study how it was built.
