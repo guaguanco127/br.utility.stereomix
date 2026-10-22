@@ -15,7 +15,7 @@
             1160.0,
             620.0
         ],
-        "description": "_br.utility.stereomix.example.2.2 -- Created by Brian Riordan, guaguanco127@gmail.com -- https://github.com/guaguanco127/",
+        "description": "_br.utility.stereomix.example.2.3 -- Created by Brian Riordan, guaguanco127@gmail.com -- https://github.com/guaguanco127/",
         "showontab": 1,
         "boxes": [
             {
@@ -33,7 +33,7 @@
                         483.0,
                         33.0
                     ],
-                    "text": "_br.utility.stereomix.example.2.2 -- Created by Brian Riordan, guaguanco127@gmail.com\nhttps://github.com/guaguanco127/"
+                    "text": "_br.utility.stereomix.example.2.3 -- Created by Brian Riordan, guaguanco127@gmail.com\nhttps://github.com/guaguanco127/"
                 }
             },
             {
@@ -86,7 +86,7 @@
                         512.0,
                         60.0
                     ],
-                    "text": "Two files, same DSP inside:\nbr.utility.stereomix.2.2 = core, no UI (in: L, R, Invert, Left Gain, Right Gain, Left Pan, Right Pan)\nbr.utility.stereomix.ui.2.2 = the same with controls, for bpatchers\nUI and core have the same inlets and audio outlets (the UI adds State last), so either swaps in without rewiring."
+                    "text": "Two files, same DSP inside:\nbr.utility.stereomix.2.3 = core, no UI (in: L, R, Invert, Left Gain, Right Gain, Left Pan, Right Pan)\nbr.utility.stereomix.ui.2.3 = the same with controls, for bpatchers\nUI and core have the same inlets and audio outlets (the UI adds State last), so either swaps in without rewiring."
                 }
             },
             {
@@ -489,7 +489,7 @@
                         220.0,
                         20.0
                     ],
-                    "text": "A: br.utility.stereomix.ui.2.2"
+                    "text": "A: br.utility.stereomix.ui.2.3"
                 }
             },
             {
@@ -503,7 +503,7 @@
                     "lockeddragscroll": 0,
                     "lockedsize": 0,
                     "maxclass": "bpatcher",
-                    "name": "br.utility.stereomix.ui.2.2.maxpat",
+                    "name": "br.utility.stereomix.ui.2.3.maxpat",
                     "numinlets": 7,
                     "numoutlets": 3,
                     "offset": [
@@ -560,7 +560,7 @@
                         300.0,
                         22.0
                     ],
-                    "text": "br.utility.stereomix.2.2"
+                    "text": "br.utility.stereomix.2.3"
                 }
             },
             {

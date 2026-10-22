@@ -1,13 +1,13 @@
 # Max/MSP Patches, Abstractions, Externals, RNBO, VSTs, and Ableton Max for Live 
 
-## br.utility.stereomix.2.2
+## br.utility.stereomix.2.3
    
 By Brian Riordan  
 guaguanco127 [at] gmail [dot] com  
 brianriordanmusic [at] gmail [dot] com  
 [https://www.brianriordanmusic.com/](https://www.brianriordanmusic.com/) 
   
-Repository for br.utility.stereomix.2.2, with all related files, can be found here: [https://github.com/guaguanco127/br.utility.stereomix](https://github.com/guaguanco127/br.utility.stereomix)  
+Repository for br.utility.stereomix.2.3, with all related files, can be found here: [https://github.com/guaguanco127/br.utility.stereomix](https://github.com/guaguanco127/br.utility.stereomix)  
 Additional programs can be found here: [https://github.com/guaguanco127/br.max](https://github.com/guaguanco127/br.max)
 
 These files were created with Max 9, or RNBO.
@@ -15,6 +15,7 @@ These files were created with Max 9, or RNBO.
 ## Links
 
 [About](#About)  
+[What's new in 2.3](#New23)  
 [Max/MSP Abstraction](https://github.com/guaguanco127/br.utility.stereomix/tree/main/MaxMSP%20Abstraction) To use as an abstraction within Max/MSP   
 [Max/MSP RNBO for External or VST](https://github.com/guaguanco127/br.utility.stereomix/tree/main/RNBO%20Patchers%20for%20External%20or%20VST) To build your own Max external, or a VST or AU audio plugin (needs RNBO)  
 [Ableton Max for Live Device](https://github.com/guaguanco127/br.utility.stereomix/tree/main/Ableton%20Max%20For%20Live) To use inside of Ableton Suite   
@@ -36,6 +37,10 @@ You can use it as an abstraction within Max/MSP or as a Max for Live device with
 **Gain:** each channel from -72 dB to +35 dB. -72 is silence, 0 is unchanged.  
 
 **Pan:** each channel from -100 (hard left) to 100 (hard right). Constant power, like the pan knobs on a mixing desk: a channel at the center sits -3 dB on each side, so it keeps its loudness as it moves, and both pans at the center make a mono mix that does not jump in level. The defaults (Left Pan -100, Right Pan 100) pass the signal through unchanged.
+
+## <a name="New23"></a>What's new in 2.3
+
+- **Readable dials in the Max for Live device:** the dials' values and needles are now white, so they stand out on the black panel (with Live's default theme they were dark and hard to read). The abstraction, RNBO patch and sound are unchanged; every file now has the version 2.3.
 
 ## <a name="New22"></a>What's new in 2.2
 
@@ -62,9 +67,9 @@ You can use it as an abstraction within Max/MSP or as a Max for Live device with
 
 | File | What it is |
 |---|---|
-| br.utility.stereomix.2.2 | No UI. The plain object to patch with |
-| br.utility.stereomix.ui.2.2 | With an Invert menu and Gain and Pan dials for each channel, ready for a [bpatcher] |
-| _br.utility.stereomix.example.2.2 | Example patch: open this first |
+| br.utility.stereomix.2.3 | No UI. The plain object to patch with |
+| br.utility.stereomix.ui.2.3 | With an Invert menu and Gain and Pan dials for each channel, ready for a [bpatcher] |
+| _br.utility.stereomix.example.2.3 | Example patch: open this first |
 
 The UI version contains the plain version and has the same inlets and audio outlets (plus State last), so either swaps in without rewiring. Open the UI version in patching mode for comments on how it is built.
 
